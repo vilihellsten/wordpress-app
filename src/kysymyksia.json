@@ -1,0 +1,46 @@
+[
+	{
+		"Kysymys": "Ensimmäinen Kysymys",
+		"Vastaukset": [
+			"ensimmäinen vastaus",
+			"toinen vastaus"
+		]
+	},
+	{
+		"Kysymys": "Toinen Kysymys",
+		"Vastaukset": [
+			"kolmas vastaus",
+			"neljäs vastaus",
+			"viides vastaus"
+		]
+	},
+	{
+		"Kysymys": "Kolmas Kysymys",
+		"Vastaukset": [
+			"kuudes vastaus",
+			"seitsemäs vastaus",
+			"kahdeksas vastaus",
+			"yhdeksäs vastaus"
+		]
+	},
+	{
+		"Kysymys": "Neljäs Kysymys",
+		"Vastaukset": [
+			"10 vastaus",
+			"11 vastaus",
+			"12 vastaus",
+			"13 vastaus",
+			"14 vastaus"
+		]
+	},
+	{
+		"Kysymys": "Viides Kysymys",
+		"Vastaukset": [
+			"10 vastaus",
+			"11 vastaus",
+			"12 vastaus",
+			"13 vastaus",
+			"14 vastaus"
+		]
+	}
+]
