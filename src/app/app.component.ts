@@ -26,12 +26,15 @@ export class AppComponent {
   kysymysIndexi = 0;  // pitää kirjaa siitä missä kysymys"lohkossa" mennään ja auttaa käymään kysymykset läpi "lohko" kerrallaan
   nappiTeksti = "Seuraava kysymys"; // muuttuu viimeisen kysymyksen kohdalla "seuraavaKysymys()" funktion kohdalla
 
-  vastaukset = [] //tallentaa vastaukset !!!! kesken, voi muuttua !!!
+  vastaukset: number[] = [] //tallentaa vastaukset !!!! kesken, voi muuttua !!!
 
   seuraavaKysymys() { // napin painalluksesta html käy ngif/for avulla läpi uuden lohkon ja uudet kysymykset kehiin
 
     if (this.kysymysIndexi < this.Kysymykset.length - 1) {
       this.kysymysIndexi++;
+
+      this.vastaukset.push(this.kysymysIndexi) //työntää indexin tällä hetkellä vastaukset listaan
+      console.log(this.vastaukset)
 
       if (this.kysymysIndexi == (this.Kysymykset.length - 1))
         this.nappiTeksti = "Valmis"; // kun viimeinen kysymys saapuu, napin teksti muuttuu "valmis" tekstiin
