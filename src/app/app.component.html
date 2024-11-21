@@ -8,18 +8,22 @@
         osa-alueet</p>
 
 
-      <p *ngIf="kysymysIndexi < Kysymykset.length"></p>
-      <h2>{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
+      <h2 [hidden]="kyselynPiilotus == 1">{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
+      <h2 [hidden]="kyselynPiilotus == 0">Kysymykset ja vastauksesi</h2>
 
-      <p *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
-        <input placeholder="Kysymys" value="{{ vastaus }}" name="id" type="{{Kysymykset[kysymysIndexi].Tyyppi}}">{{
-        vastaus }}
+      <p [hidden]="kyselynPiilotus == 1" *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
+        <input placeholder="Kysymys" name="id" type="{{Kysymykset[kysymysIndexi].Tyyppi}}"
+          (change)="onCheckboxChange($event, vastaus)">{{vastaus }}
       </p>
 
-      <button (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+      <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+      <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2
+        }}</button>
+
+      <p [hidden]="kyselynPiilotus == 0 " *ngFor="let vastaus of kysymysJaVastaukset">{{vastaus}}</p>
+
 
     </div>
-
   </div>
 
 </main>
