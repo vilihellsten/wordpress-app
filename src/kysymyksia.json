@@ -4,7 +4,8 @@
 		"Vastaukset": [
 			"ensimmäinen vastaus",
 			"toinen vastaus"
-		]
+		],
+		"Tyyppi": "checkbox"
 	},
 	{
 		"Kysymys": "Toinen Kysymys",
@@ -12,7 +13,8 @@
 			"kolmas vastaus",
 			"neljäs vastaus",
 			"viides vastaus"
-		]
+		],
+		"Tyyppi": "Radio"
 	},
 	{
 		"Kysymys": "Kolmas Kysymys",
@@ -21,7 +23,8 @@
 			"seitsemäs vastaus",
 			"kahdeksas vastaus",
 			"yhdeksäs vastaus"
-		]
+		],
+		"Tyyppi": "Radio"
 	},
 	{
 		"Kysymys": "Neljäs Kysymys",
@@ -31,7 +34,8 @@
 			"12 vastaus",
 			"13 vastaus",
 			"14 vastaus"
-		]
+		],
+		"Tyyppi": "checkbox"
 	},
 	{
 		"Kysymys": "Viides Kysymys",
@@ -41,6 +45,7 @@
 			"12 vastaus",
 			"13 vastaus",
 			"14 vastaus"
-		]
+		],
+		"Tyyppi": "Radio"
 	}
 ]

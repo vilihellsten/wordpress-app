@@ -7,20 +7,24 @@
       <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
         osa-alueet</p>
 
-      <p *ngIf="kysymysIndexi < Kysymykset.length"></p>
-      <h2>{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
+      <div *ngIf="kysymysIndexi < Kysymykset.length">
+        <h2>{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
 
-      <p *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
-        <input placeholder="Kysymys" type="checkbox">
-        {{ vastaus }}
-      </p>
+        <p *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
+          <input placeholder="Kysymys" value="{{vastaus}}" name="id" type="{{Kysymykset[kysymysIndexi].Tyyppi}}">
+          {{ vastaus }}
+        </p>
+      </div>
 
-      <button (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+      <div class="button-container">
+        <button class="button" (click)="edellinenKysymys()">{{ nappiTeksti2 }}</button>
+        <button class="button" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+      </div>
 
     </div>
-
   </div>
 
 </main>
+
 
 <router-outlet />
