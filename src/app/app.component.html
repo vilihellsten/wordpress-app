@@ -7,19 +7,23 @@
       <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
         osa-alueet</p>
 
-      <div *ngIf="kysymysIndexi < Kysymykset.length">
-        <h2>{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
 
-        <p *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
-          <input placeholder="Kysymys" value="{{vastaus}}" name="id" type="{{Kysymykset[kysymysIndexi].Tyyppi}}">
-          {{ vastaus }}
-        </p>
-      </div>
 
-      <div class="button-container">
-        <button class="button" (click)="edellinenKysymys()">{{ nappiTeksti2 }}</button>
-        <button class="button" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
-      </div>
+      <h2 [hidden]="kyselynPiilotus == 1">{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
+      <h2 [hidden]="kyselynPiilotus == 0">Kysymykset ja vastauksesi</h2>
+
+      <p [hidden]="kyselynPiilotus == 1" *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
+        <input placeholder="Kysymys" name="id" type="{{Kysymykset[kysymysIndexi].Tyyppi}}"
+          (change)="onCheckboxChange($event, vastaus)">{{vastaus }}
+      </p>
+
+      <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+      <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2
+        }}</button>
+
+      <p [hidden]="kyselynPiilotus == 0 " *ngFor="let vastaus of kysymysJaVastaukset">{{vastaus}}</p>
+
+
 
     </div>
   </div>
