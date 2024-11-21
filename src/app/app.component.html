@@ -8,6 +8,7 @@
         osa-alueet</p>
 
 
+
       <h2 [hidden]="kyselynPiilotus == 1">{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
       <h2 [hidden]="kyselynPiilotus == 0">Kysymykset ja vastauksesi</h2>
 
@@ -23,9 +24,11 @@
       <p [hidden]="kyselynPiilotus == 0 " *ngFor="let vastaus of kysymysJaVastaukset">{{vastaus}}</p>
 
 
+
     </div>
   </div>
 
 </main>
+
 
 <router-outlet />

@@ -27,9 +27,11 @@ export class AppComponent {
   nappiTeksti = "Seuraava kysymys"; // muuttuu viimeisen kysymyksen kohdalla "seuraavaKysymys()" funktion kohdalla
   nappiTeksti2 = "Edellinen kysymys";
 
+
   kyselynPiilotus = 0
 
   kysymysJaVastaukset: string[][] = [] //tallentaa kysymyksen ja vastaukset !!!! kesken, voi muuttua !!!
+
 
   vastaukset: string[] = [this.Kysymykset[this.kysymysIndexi].Kysymys]
 
@@ -82,4 +84,3 @@ export class AppComponent {
     console.log(this.kysymysJaVastaukset)
   }
 
-}
