@@ -13,7 +13,7 @@
 
       <p [hidden]="kyselynPiilotus == 1" *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
         <input placeholder="Kysymys" name="id" type="{{Kysymykset[kysymysIndexi].Tyyppi}}"
-          (change)="onCheckboxChange($event, vastaus)">{{vastaus }}
+          (change)="onCheckboxChange($event, vastaus)">{{ vastaus }}
       </p>
 
       <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
