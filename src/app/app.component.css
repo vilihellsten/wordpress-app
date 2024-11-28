@@ -1,21 +1,43 @@
-.main-container {}
+.main-container {
+    /*background: linear-gradient(225deg,rgba(29, 20, 148)1%,
+    rgb(231, 238, 247)35%,
+    rgba(40, 98, 185)75%);*/
+    min-height: 100vh; /* Varmistaa, että elementti kattaa vähintään koko ikkunan korkeuden */
+    background: rgb(16,16,125);
+    background: radial-gradient(circle, rgba(16,16,125,1) 0%, rgba(22,36,133,1) 6%, rgba(26,41,139,1) 12%, rgba(27,43,144,1) 18%, rgba(25,41,142,1) 29%, rgba(14,27,122,1) 44%, rgba(8,18,93,1) 57%, rgba(2,8,68,1) 77%); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Aseta sisältö jakautumaan */
+}
+
 
 .row {
     display: grid;
     justify-content: center;
     width: 100%;
-
+    color:#f4f5f2;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    
 }
 
 .button-container {
+    position: fixed; /* Kiinnitetään painikecontainer alareunaan */
+
+    bottom: 20px; /* Etäisyys ikkunan alareunasta */
+
+    left: 50%; /* Keskitetään vaakasuunnassa */
+
+    transform: translateX(-50%); /* Siirretään takaisin puoliväliin */
+
     display: flex;
-    /* Aktivoi Flexbox */
+
     gap: 1em;
-    /* Aseta painikkeiden väli */
+
     justify-content: center;
-    /* Kohdista painikkeet vaakasuunnassa */
-    margin-top: 1em;
-    /* Lisää etäisyyttä muusta sisällöstä */
+
+    margin-bottom: 200px; /* Poistetaan marginaalit */
 }
 
 .button {
@@ -24,8 +46,6 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 1em;
-    justify-content: flex-start;
     margin-top: 1em;
     padding: 0.75em 1em;
     padding-right: 1.25em;
