@@ -29,7 +29,7 @@ export class AppComponent {
 
   kyselynPiilotus = 0
 
-  kysymysJaVastaukset: string[][] = [] //tallentaa kysymyksen ja vastaukset !!!! kesken, voi muuttua !!!
+  kysymysJaVastaukset: string[][] = []; //tallentaa kysymyksen ja vastaukset !!!! kesken, voi muuttua !!!
 
   vastaukset: string[] = [this.Kysymykset[this.kysymysIndexi].Kysymys]
 
@@ -48,7 +48,7 @@ export class AppComponent {
 
   seuraavaKysymys() { // napin painalluksesta html käy ngif/for avulla läpi uuden lohkon ja uudet kysymykset kehiin
 
-    this.kysymysJaVastaukset.push(this.vastaukset) // työntää vastauslistan kysymysjavastaukset listaan jota luodaan onCheckboxChange kohdassa
+    this.kysymysJaVastaukset[this.kysymysIndexi] = [...this.vastaukset]; // Tallentaa tiedot kysymysJaVastaukset-rakenteeseen ennen kuin siirtyy seuraavaan kysymykseen
 
     if (this.kysymysIndexi < this.Kysymykset.length - 1) {
       this.kysymysIndexi++;
@@ -72,14 +72,15 @@ export class AppComponent {
       this.kysymysIndexi--;
     }
 
-    if (this.kysymysIndexi != (this.Kysymykset.length - 1))// kun viimeinen kysymys saapuu, napin teksti muuttuu "valmis" tekstiin
+    if (this.kysymysIndexi != (this.Kysymykset.length - 1)){// kun viimeinen kysymys saapuu, napin teksti muuttuu "valmis" tekstiin
       this.nappiTeksti = "Seuraava Kysymys";
-
+    }
     // tähän väliin voisi tulla, pitää valitut checkboxit chekattuna
 
-    this.kysymysJaVastaukset.splice(this.kysymysIndexi) // poistaa indexin avulla vastaukset listan kysymysJaVastaukset listasta
+    this.vastaukset = this.kysymysJaVastaukset[this.kysymysIndexi] || []; //Hakee vastaukset kysymysJaVastaukset-rakenteesta ja asettaa ne aktiiviseksi
+    /*this.kysymysJaVastaukset.splice(this.kysymysIndexi) // poistaa indexin avulla vastaukset listan kysymysJaVastaukset listasta
     this.vastaukset = [this.Kysymykset[this.kysymysIndexi].Kysymys] // alustaa vastaukset listan edelliselle kysymykselle ja vastauksille
-    console.log(this.kysymysJaVastaukset)
+    console.log(this.kysymysJaVastaukset)*/
   }
 
 }
