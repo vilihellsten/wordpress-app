@@ -10,8 +10,7 @@
     justify-content: space-between; /* Aseta sisältö jakautumaan */
 }
 
-
-.row {
+.row{
     display: grid;
     justify-content: center;
     width: 100%;
@@ -21,9 +20,25 @@
     margin-bottom: 200px;
     
 }
+.card{
+    width: 600px;
+
+    height: 500px;
+    
+    border-radius: 10px;
+    border:1px solid #f4f5f250; /* tällä voi muuttaa raidan värin */
+  
+    padding: 20px;
+  
+    box-shadow: 0 16px 24px rgba(1, 1, 1, 1); /*tällä voi muuttaa varjotekstuurin värin */
+}
+.h1 {
+    text-align: center;
+  
+}
 
 .button-container {
-    position: fixed; /* Kiinnitetään painikecontainer alareunaan */
+    position: absolute; /* Kiinnitetään painikecontainer alareunaan */
 
     bottom: 20px; /* Etäisyys ikkunan alareunasta */
 
@@ -78,6 +93,3 @@
 }
 
 
-.h1 {
-    text-align: center;
-}
