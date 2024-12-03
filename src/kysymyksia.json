@@ -14,9 +14,7 @@
 			"neljäs vastaus",
 			"viides vastaus"
 		],
-    
 		"Tyyppi": "Radio"
-
 	},
 	{
 		"Kysymys": "Kolmas Kysymys",
@@ -26,9 +24,7 @@
 			"kahdeksas vastaus",
 			"yhdeksäs vastaus"
 		],
-
 		"Tyyppi": "Radio"
-
 	},
 	{
 		"Kysymys": "Neljäs Kysymys",
@@ -40,18 +36,16 @@
 			"14 vastaus"
 		],
 		"Tyyppi": "checkbox"
-
 	},
 	{
 		"Kysymys": "Viides Kysymys",
 		"Vastaukset": [
 			"10 vastaus",
-			"11 vastaus",
+			"15 vastaus",
 			"12 vastaus",
 			"13 vastaus",
 			"14 vastaus"
 		],
 		"Tyyppi": "Radio"
-
 	}
 ]
