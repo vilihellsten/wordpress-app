@@ -20,7 +20,6 @@ body {
     /* Aseta sisältö jakautumaan */
 }
 
-
 .row {
     display: grid;
     justify-content: center;
@@ -32,9 +31,34 @@ body {
 
 }
 
+.card {
+    width: 600px;
+
+    height: 500px;
+
+    border-radius: 10px;
+    border: 1px solid #f4f5f250;
+    /* tällä voi muuttaa raidan värin */
+
+    padding: 20px;
+
+    box-shadow: 0 16px 24px rgba(1, 1, 1, 1);
+    /*tällä voi muuttaa varjotekstuurin värin */
+}
+
+.h1 {
+    text-align: center;
+
+}
+
 .button-container {
+
     position: sticky;
     /* Kiinnitetään painikecontainer alareunaan */
+
+    position: absolute;
+    /* Kiinnitetään painikecontainer alareunaan */
+
 
     bottom: 20px;
     /* Etäisyys ikkunan alareunasta */
@@ -90,9 +114,4 @@ body {
 .button:active {
     transform: scale(0.98);
     box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
-}
-
-
-.h1 {
-    text-align: center;
 }
