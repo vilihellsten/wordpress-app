@@ -53,10 +53,9 @@ body {
 
 .button-container {
 
-    position: sticky;
     /* Kiinnitetään painikecontainer alareunaan */
 
-    position: absolute;
+    position: fixed;
     /* Kiinnitetään painikecontainer alareunaan */
 
 
