@@ -2,28 +2,39 @@
 
   <div class="main-container">
     <div class="row">
-      <div class="card">
-        <section class="Text">
-          <h1>Kyberturvakysely</h1>
-          <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
-            osa-alueet</p>
 
 
+      <h1>Kyberturvakysely</h1>
+      <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
+        osa-alueet</p>
 
-          <h2 [hidden]="kyselynPiilotus == 1">{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
-          <h2 [hidden]="kyselynPiilotus == 0">Kysymykset ja vastauksesi</h2>
+      <div class="kysely" [hidden]="kyselynPiilotus == 1">
+        <h2>{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
 
-          <p [hidden]="kyselynPiilotus == 1" *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
-            <input placeholder="Kysymys" name="id" type="{{Kysymykset[kysymysIndexi].Tyyppi}}"
-              (change)="onCheckboxChange($event, vastaus)">{{vastaus }}
+        <div class="kysymykset">
+          <p *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
+            <input placeholder="Kysymys" name="id" type="checkbox" (change)="onCheckboxChange($event, vastaus)"
+              [checked]="vastaukset.includes(vastaus)">{{vastaus }}
           </p>
-        </section>
-        <div class="button-container">
-          <button class="button" [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
-          <button class="button" [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
         </div>
-        <p [hidden]="kyselynPiilotus == 0 " *ngFor="let vastaus of kysymysJaVastaukset">{{vastaus}}</p>
+
       </div>
+
+      <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+      <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2
+        }}</button>
+
+      <div class="tulokset" [hidden]="kyselynPiilotus== 0">
+        <h2>Kysymykset ja vastauksesi</h2>
+        <div *ngFor="let vastaus of kysymysJaVastaukset">
+          <h3>{{ vastaus[0] }}</h3>
+          <div *ngFor="let vastaus of vastaus.slice(1)">
+            <p>{{vastaus}}</p>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
