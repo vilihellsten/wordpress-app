@@ -3,7 +3,7 @@
   <div class="main-container">
     <div class="row">
       <div class="card">
-        <div class="Text">
+        <section class="Text">
           <h1>Kyberturvakysely</h1>
           <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
             osa-alueet</p>
@@ -17,7 +17,7 @@
             <input placeholder="Kysymys" name="id" type="{{Kysymykset[kysymysIndexi].Tyyppi}}"
               (change)="onCheckboxChange($event, vastaus)">{{vastaus }}
           </p>
-        </div>
+        </section>
         <div class="button-container">
           <button class="button" [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
           <button class="button" [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
@@ -28,6 +28,5 @@
   </div>
 
 </main>
-
 
 <router-outlet />
