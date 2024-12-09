@@ -2,28 +2,30 @@
 
   <div class="main-container">
     <div class="row">
+      <div class="card">
+        
+        <h1>Kyberturvakysely</h1>
+        <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
+          osa-alueet</p>
 
+        <div class="kysely" [hidden]="kyselynPiilotus == 1">
+          <h2>{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
 
-      <h1>Kyberturvakysely</h1>
-      <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
-        osa-alueet</p>
-
-      <div class="kysely" [hidden]="kyselynPiilotus == 1">
-        <h2>{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
-
-        <div class="kysymykset">
-          <p *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
-            <input placeholder="Kysymys" name="id" type="checkbox" (change)="onCheckboxChange($event, vastaus)"
-              [checked]="vastaukset.includes(vastaus)">{{vastaus }}
-          </p>
+          <div class="kysymykset">
+            <p *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
+              <input placeholder="Kysymys" name="id" type="checkbox" (change)="onCheckboxChange($event, vastaus)"
+                [checked]="vastaukset.includes(vastaus)">{{vastaus }}
+            </p>
+          </div>
         </div>
-
       </div>
+    </div>
+    <div class="button-container">
+      <button class="button" [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+      <button class="button" [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
+    </div>
 
-      <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
-      <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2
-        }}</button>
-
+    <div>
       <div class="tulokset" [hidden]="kyselynPiilotus== 0">
         <h2>Kysymykset ja vastauksesi</h2>
         <div *ngFor="let vastaus of kysymysJaVastaukset">
