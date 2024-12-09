@@ -14,7 +14,9 @@
 			"neljäs vastaus",
 			"viides vastaus"
 		],
+
 		"Monivalinta": "Ei"
+
 	},
 	{
 		"Kysymys": "Kolmas Kysymys",
@@ -24,8 +26,9 @@
 			"kahdeksas vastaus",
 			"yhdeksäs vastaus"
 		],
+
 		"Monivalinta": "Kyllä"
-	},
+
 	{
 		"Kysymys": "Neljäs Kysymys",
 		"Vastaukset": [
@@ -35,11 +38,15 @@
 			"13 vastaus",
 			"14 vastaus"
 		],
+
 		"Monivalinta": "Kyllä"
+
+
 	},
 	{
 		"Kysymys": "Viides Kysymys",
 		"Vastaukset": [
+
 			"15 vastaus",
 			"16 vastaus",
 			"17 vastaus",
@@ -47,5 +54,6 @@
 			"19 vastaus"
 		],
 		"Monivalinta": "Ei"
+
 	}
 ]

@@ -27,11 +27,14 @@ export class AppComponent {
   nappiTeksti = "Seuraava kysymys"; // muuttuu viimeisen kysymyksen kohdalla "seuraavaKysymys()" funktion kohdalla
   nappiTeksti2 = "Edellinen kysymys";
 
+
   kyselynPiilotus = 0
 
   kysymysJaVastaukset: string[][] = []; //tallentaa kysymyksen ja vastaukset !!!! kesken, voi muuttua !!!
 
+
   vastaukset: string[] = [this.Kysymykset[this.kysymysIndexi].Kysymys] //alustaa sivun avauksen alussa vastaukset listan sisältämään ensimmäisen kysymyksen
+
 
 
   onCheckboxChange(event: any, vastaus: string) { // kuuntelee checkboxien eventtejä
@@ -89,6 +92,7 @@ export class AppComponent {
     if (this.kysymysIndexi != 0) { // laskee kysymysindexiä jotta edelliset kysymykset tulevat esiin
       this.kysymysIndexi--;
     }
+    
 
     if (this.kysymysIndexi != (this.Kysymykset.length - 1)) {// kun viimeinen kysymys saapuu, napin teksti muuttuu "valmis" tekstiin
       this.nappiTeksti = "Seuraava Kysymys";
@@ -101,5 +105,4 @@ export class AppComponent {
     this.vastaukset = [this.Kysymykset[this.kysymysIndexi].Kysymys] // alustaa vastaukset listan edelliselle kysymykselle ja vastauksille
     console.log(this.kysymysJaVastaukset)*/
   }
-
 }
