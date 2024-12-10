@@ -3,8 +3,9 @@
   <div class="main-container">
     <div class="row">
       <div class="card">
-        
-        <h1>Kyberturvakysely</h1>
+        <div class ="otsikko">
+          <h1>Kyberturvakysely</h1>
+        </div>
         <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
           osa-alueet</p>
 
@@ -18,26 +19,26 @@
             </p>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="button-container">
-      <button class="button" [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
-      <button class="button" [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
-    </div>
-
-    <div>
-      <div class="tulokset" [hidden]="kyselynPiilotus== 0">
-        <h2>Kysymykset ja vastauksesi</h2>
-        <div *ngFor="let vastaus of kysymysJaVastaukset">
-          <h3>{{ vastaus[0] }}</h3>
-          <div *ngFor="let vastaus of vastaus.slice(1)">
-            <p>{{vastaus}}</p>
+        <div>
+          <div class="tulokset" [hidden]="kyselynPiilotus== 0">
+            <h2>Kysymykset ja vastauksesi</h2>
+            <div *ngFor="let vastaus of kysymysJaVastaukset">
+              <h3>{{ vastaus[0] }}</h3>
+              <div *ngFor="let vastaus of vastaus.slice(1)">
+                <p>{{vastaus}}</p>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="button-container">
+          <button class="button" [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
+          <button class="button" [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+        </div>
       </div>
-
-
     </div>
+
+
+
   </div>
 
 </main>

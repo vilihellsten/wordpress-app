@@ -1,33 +1,24 @@
 
-*{
-font-family:sans-serif;
-margin:0;
-padding:0;
-box-sizing: border-box;
+html,body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Estää vierityspalkkien näkymisen */
+    
+}
 
-}
-body {
-    width:100%;
-    height: 100dvh;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-}
+
 
 .main-container {
-    /*background: linear-gradient(225deg,rgba(29, 20, 148)1%,
-    rgb(231, 238, 247)35%,
-    rgba(40, 98, 185)75%);*/
-    min-height: 100vh;
-    /* Varmistaa, että elementti kattaa vähintään koko ikkunan korkeuden */
     background: rgb(16, 16, 125);
     background: radial-gradient(circle, rgba(16, 16, 125, 1) 0%, rgba(22, 36, 133, 1) 6%, rgba(26, 41, 139, 1) 12%, rgba(27, 43, 144, 1) 18%, rgba(25, 41, 142, 1) 29%, rgba(14, 27, 122, 1) 44%, rgba(8, 18, 93, 1) 57%, rgba(2, 8, 68, 1) 77%);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    /* Aseta sisältö jakautumaan */
+    justify-content: space-between;/* Aseta sisältö jakautumaan */
+    min-width: 100vw; /* Varmistaa vaakasuoran peittävyyden */
+    min-height: 100vh; /* Varmistaa pystysuoran peittävyyden */
+    
 }
 
 .row {
@@ -36,28 +27,38 @@ body {
     width: 100%;
     color: #f4f5f2;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
     margin-top: 200px;
     margin-bottom: 200px;
 
 }
 
 .card {
-    width: 600px;
-
-    height: 500px;
-
+    width: 1500px;
+    height: 900px;
     border-radius: 10px;
     border: 1px solid #f4f5f250;
     /* tällä voi muuttaa raidan värin */
-
-    padding: 20px;
-
+    padding: 50px 20px;
     box-shadow: 0 16px 24px rgba(1, 1, 1, 1);
     /*tällä voi muuttaa varjotekstuurin värin */
+    text-align: center;
+    background-color: #ffffff12;
+    border: 1px solid #fff;
+    backdrop-filter: blur(10px);
 }
 
-.h1 {
+.otsikko,.h1 {
     text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 10px;
+    text-shadow: 0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 40px cyan,
+        0 0 80px cyan;
+
 
 }
 
@@ -69,7 +70,8 @@ body {
     /* Kiinnitetään painikecontainer alareunaan */
 
 
-    bottom: 20px;
+    bottom: 5px;
+
     /* Etäisyys ikkunan alareunasta */
 
     left: 50%;
