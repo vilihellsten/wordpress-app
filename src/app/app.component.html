@@ -29,13 +29,15 @@
           <h3>{{ vastaus[0] }}</h3>
           <div *ngFor="let vastaus of vastaus.slice(1)">
             <p>{{vastaus}}</p>
+
           </div>
         </div>
+        <div [innerHTML]=aiVastaus></div>
       </div>
 
     </div>
   </div>
 
-</main>
 
+</main>
 <router-outlet />

@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import * as kysymyksia from "../kysymyksia.json"
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
 @Component({
@@ -10,11 +11,13 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [RouterOutlet, CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'wordpress-app';
   Kysymykset: any = (kysymyksia as any).default;
+
+
 
   constructor() {
     console.log(this.Kysymykset) // näyttää koko JSON sisällön logissa
@@ -32,6 +35,8 @@ export class AppComponent {
   kysymysJaVastaukset: string[][] = []; //tallentaa kysymyksen ja vastaukset !!!! kesken, voi muuttua !!!
 
   vastaukset: string[] = [this.Kysymykset[this.kysymysIndexi].Kysymys] //alustaa sivun avauksen alussa vastaukset listan sisältämään ensimmäisen kysymyksen
+
+  aiVastaus: string[] = [];
 
 
   onCheckboxChange(event: any, vastaus: string) { // kuuntelee checkboxien eventtejä
@@ -62,7 +67,7 @@ export class AppComponent {
 
   seuraavaKysymys() { // napin painalluksesta html käy ngif/for avulla läpi uuden lohkon ja uudet kysymykset kehiin
 
-    if (!this.vastaukset.includes(this.Kysymykset[this.kysymysIndexi].Kysymys)) //jos vastaukset ei sisällä kysymystä, siirtää vastaukset alkuun kysymyksen
+    if (!this.vastaukset.includes(this.Kysymykset[this.kysymysIndexi].Kysymys)) //jos vastaukset ei sisällä kysymystä, siirtää vastaukset listan alkuun kysymyksen
       this.vastaukset.unshift(this.Kysymykset[this.kysymysIndexi].Kysymys)
 
     this.kysymysJaVastaukset[this.kysymysIndexi] = [...this.vastaukset]; // Tallentaa tiedot kysymysJaVastaukset-rakenteeseen ennen kuin siirtyy seuraavaan kysymykseen
@@ -74,7 +79,12 @@ export class AppComponent {
 
     if (this.nappiTeksti == "Valmis") { // piilottaa kyselyn kun nappiteksti on valmis
       this.kyselynPiilotus = 1
+
+      this.vastaus();
     }
+
+
+
     if (this.kysymysIndexi == this.Kysymykset.length - 1) {// kun viimeinen kysymys saapuu, napin teksti muuttuu "valmis" tekstiin
       this.nappiTeksti = "Valmis";
     }
@@ -83,6 +93,44 @@ export class AppComponent {
     this.vastaukset = this.kysymysJaVastaukset[this.kysymysIndexi] || []; //Hakee vastaukset kysymysJaVastaukset-rakenteesta ja asettaa ne aktiiviseksi
 
   }
+
+
+  async vastaus() {
+
+    const genAI = new GoogleGenerativeAI("AIzaSyDiBGfjOGyHce_PMShiZyVX7Gqou83Tnuc");
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+
+    const prompt = this.kysymysJaVastaukset + "Anna vastauksesi toiseen kysymykseen";
+
+    /*
+        const tiedosto = await fetch('../Tietoturvaopas.pdf');
+        const vastaus = await tiedosto.arrayBuffer();
+        const buffer = new Uint8Array(vastaus);
+        const base64 = btoa(String.fromCharCode.apply(null, Array.from(buffer)));
+    
+        const result = await model.generateContent([
+          {
+            inlineData: {
+              data: base64,
+              mimeType: "application/pdf",
+            },
+          },
+          'Summarize this document',]);
+        this.aiVastaus = result.response.text().split("\n");
+      }*/
+
+    try {
+
+      const result = await model.generateContent(prompt);
+      this.aiVastaus = result.response.text().split("\n");
+
+      console.log(result.response.text());
+    } catch (error) {
+      console.error("Errori:", error);
+    }
+  }
+
 
   edellinenKysymys() { // napin painalluksesta html käy ngif/for avulla läpi uuden lohkon ja uudet kysymykset kehiin
 
@@ -97,9 +145,7 @@ export class AppComponent {
     this.vastaukset = this.kysymysJaVastaukset[this.kysymysIndexi] || []; //Hakee vastaukset kysymysJaVastaukset-rakenteesta ja asettaa ne aktiiviseksi
 
     console.log(this.kysymysJaVastaukset)
-    /*this.kysymysJaVastaukset.splice(this.kysymysIndexi) // poistaa indexin avulla vastaukset listan kysymysJaVastaukset listasta
-    this.vastaukset = [this.Kysymykset[this.kysymysIndexi].Kysymys] // alustaa vastaukset listan edelliselle kysymykselle ja vastauksille
-    console.log(this.kysymysJaVastaukset)*/
+
   }
 
 }

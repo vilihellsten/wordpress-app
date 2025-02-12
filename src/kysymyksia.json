@@ -8,11 +8,11 @@
 		"Monivalinta": "Kyllä"
 	},
 	{
-		"Kysymys": "Toinen Kysymys",
+		"Kysymys": "Kysymys 2. Mikä on tietojenkalastelu (phishing)",
 		"Vastaukset": [
-			"kolmas vastaus",
-			"neljäs vastaus",
-			"viides vastaus"
+			"Haittaohjelma, joka lukitsee tietokoneen",
+			"Menetelmä, jossa huijataan käyttäjiä luovuttamaan henkilökohtaisia tietojaan",
+			"Verkon suojausmekanismi, joka estää tietomurrot"
 		],
 		"Monivalinta": "Ei"
 	},

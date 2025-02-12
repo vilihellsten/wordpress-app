@@ -21,7 +21,10 @@
     "@angular/platform-server": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@angular/ssr": "^18.2.8",
+    "@google/generative-ai": "^0.21.0",
     "express": "^4.18.2",
+    "pdfjs": "^2.5.3",
+    "pdfjs-dist": "^4.10.38",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
