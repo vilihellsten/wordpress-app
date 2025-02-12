@@ -1,59 +1,152 @@
 [
 	{
-		"Kysymys": "Ensimmäinen Kysymys",
+		"Kysymys": "1.Kuinka yrityksessänne suojataan päätelaitteet (tietokoneet, puhelimet, tabletit)?",
 		"Vastaukset": [
-			"ensimmäinen vastaus",
-			"toinen vastaus"
-		],
-		"Monivalinta": "Kyllä"
-	},
-	{
-		"Kysymys": "Toinen Kysymys",
-		"Vastaukset": [
-			"kolmas vastaus",
-			"neljäs vastaus",
-			"viides vastaus"
-		],
-
-		"Monivalinta": "Ei"
-
-	},
-	{
-		"Kysymys": "Kolmas Kysymys",
-		"Vastaukset": [
-			"kuudes vastaus",
-			"seitsemäs vastaus",
-			"kahdeksas vastaus",
-			"yhdeksäs vastaus"
-		],
-
-		"Monivalinta": "Kyllä"
-	},
-	{
-		"Kysymys": "Neljäs Kysymys",
-		"Vastaukset": [
-			"10 vastaus",
-			"11 vastaus",
-			"12 vastaus",
-			"13 vastaus",
-			"14 vastaus"
-		],
-
-		"Monivalinta": "Kyllä"
-
-
-	},
-	{
-		"Kysymys": "Viides Kysymys",
-		"Vastaukset": [
-
-			"15 vastaus",
-			"16 vastaus",
-			"17 vastaus",
-			"18 vastaus",
-			"19 vastaus"
+			"Laitteilla on vahvat salasanat ja monivaiheinen tunnistautuminen",
+			"Laitteilla on salasanat, mutta monivaiheista tunnistautumista ei ole käytössä",
+			"Laitteet eivät ole salasanan takana tai ne jaetaan useiden käyttäjien kesken",
+			"En tiedä"
 		],
 		"Monivalinta": "Ei"
-
+	},
+	{
+		"Kysymys": "2.Onko yrityksessänne käytössä kovalevyjen salaus päätelaitteilla?",
+		"Vastaukset": [
+			"Kyllä, kaikilla laitteilla",
+			"Kyllä, osalla laitteista",
+			"Ei ole käytössä",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "3.Kuinka usein yrityksessänne päivitetään käyttöjärjestelmät ja ohjelmistot?",
+		"Vastaukset": [
+			"Automaattisesti heti, kun päivitys on saatavilla",
+			"Manuaalisesti säännöllisesti (esim. kerran kuukaudessa)",
+			"Epäsäännöllisesti tai vain, kun jokin ei toimi",
+			"Ei koskaan tai en tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "4.Onko yrityksessänne käytössä virustorjuntaohjelmisto kaikilla laitteilla?",
+		"Vastaukset": [
+			"Kyllä, kaikilla laitteilla ja se päivittyy automaattisesti",
+			"Kyllä, mutta vain osalla laitteista",
+			"Ei ole käytössä",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "5.Miten yrityksessänne hallitaan salasanoja?",
+		"Vastaukset": [
+			"Jokaisella on yksilölliset, vahvat salasanat ja käytämme salasanojen hallintatyökalua",
+			"Jokaisella on vahvat salasanat, mutta niitä ei hallita keskitetysti",
+			"Käytämme samoja salasanoja eri järjestelmissä, mutta vaihdamme ne säännöllisesti",
+			"Salasanoja ei juuri hallita eikä niitä vaihdeta säännöllisesti"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "6.Onko yrityksessänne käytössä monivaiheinen tunnistautuminen (MFA)?",
+		"Vastaukset": [
+			"Kyllä, kaikissa mahdollisissa järjestelmissä",
+			"Kyllä, osassa järjestelmistä",
+			"Ei ole käytössä",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "7.Kuinka työntekijät tunnistavat ja torjuvat tietojenkalasteluyrityksiä?",
+		"Vastaukset": [
+			"Meillä on koulutusta tietojenkalastelusta ja säännöllisiä testejä",
+			"Olemme tietoisia tietojenkalastelusta, mutta emme saa koulutusta",
+			"Emme ole saaneet koulutusta, mutta yritämme olla varovaisia",
+			"En tiedä, mitä tietojenkalastelu tarkoittaa"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "8.Miten yrityksessänne käsitellään epäilyttäviä sähköposteja?",
+		"Vastaukset": [
+			"Ne raportoidaan IT-tukeen tai tietoturvavastaavalle",
+			"Ne poistetaan heti ilman jatkotoimenpiteitä",
+			"Ne avataan, jos ne vaikuttavat tärkeiltä",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "9.Onko yrityksessänne erilliset päätelaitteet työhön ja henkilökohtaiseen käyttöön??",
+		"Vastaukset": [
+			"Kyllä, kaikilla työntekijöillä on erilliset laitteet",
+			"Kyllä, mutta vain osalla työntekijöistä",
+			"Ei, samoja laitteita käytetään sekä työ- että henkilökohtaisiin tarkoituksiin",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "10. Miten yrityksessänne suojataan asiakastiedot ja muut arkaluontoiset tiedot?",
+		"Vastaukset": [
+			"Käytämme salattuja tallennusratkaisuja ja pääsynhallintaa",
+			"Tiedot ovat tallessa suojatuilla palvelimilla, mutta pääsyä ei ole rajoitettu tiukasti",
+			"Tiedot tallennetaan tavallisille laitteille ilman erityistä suojausta",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "11. Kuinka yrityksessänne toimitaan, jos epäillään tietoturvaloukkausta?",
+		"Vastaukset": [
+			"Meillä on selkeä toimintasuunnitelma ja ilmoituskäytäntö",
+			"Tiedämme, että asiasta tulee ilmoittaa, mutta toimintasuunnitelma on epäselvä",
+			"Emme tiedä, mitä tehdä tietoturvaloukkauksen tapahtuessn",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "12. Onko yrityksessänne käytössä tietoturvapolitiikka tai ohjeistus?",
+		"Vastaukset": [
+			"Kyllä, ja se päivitetään säännöllisesti",
+			"Kyllä, mutta sitä ei päivitetä usein",
+			"Ei ole käytössä",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "13.Miten yrityksessänne käsitellään etätyöhön liittyviä tietoturvariskejä?",
+		"Vastaukset": [
+			"Käytämme VPN-yhteyttä ja muita tietoturvaratkaisuja etätyössä",
+			"Työntekijöillä on ohjeistukset tietoturvalliseen etätyöhön",
+			"Etätyöskentelyä ei ole rajoitettu, eikä erityisiä suojaustoimia ole käytössä",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "14. Kuinka yrityksessänne hallitaan ja suojataan USB-muistitikut ja muut siirrettävät tallennusvälineet?",
+		"Vastaukset": [
+			" USB-muistien käyttö on kielletty tai niitä saa käyttää vain salattuna",
+			"USB-muisteja saa käyttää, mutta niiden käyttöä valvotaan",
+			"USB-muisteja käytetään vapaasti ilman rajoituksia",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "15. Kuinka usein yrityksessänne järjestetään tietoturvakoulutuksia henkilöstölle?",
+		"Vastaukset": [
+			"Säännöllisesti (esim. kerran vuodessa tai useammin)",
+			"Harvemmin kuin kerran vuodessa",
+			"Ei koskaan",
+			"En tiedä"
+		],
+		"Monivalinta": "Ei"
 	}
 ]
