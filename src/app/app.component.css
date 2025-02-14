@@ -1,24 +1,19 @@
-
 html,body {
     width: clamp(400px,50vm,800px); /*clamp = min, max, and default*/
     height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden; /* Estää vierityspalkkien näkymisen */
-    
 }
-
-
 
 .main-container {
     background: rgb(16, 16, 125);
     background: radial-gradient(circle, rgba(16, 16, 125, 1) 0%, rgba(22, 36, 133, 1) 6%, rgba(26, 41, 139, 1) 12%, rgba(27, 43, 144, 1) 18%, rgba(25, 41, 142, 1) 29%, rgba(14, 27, 122, 1) 44%, rgba(8, 18, 93, 1) 57%, rgba(2, 8, 68, 1) 77%);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;/* Aseta sisältö jakautumaan */
-    min-width: 100vw; /* Varmistaa vaakasuoran peittävyyden */
-    min-height: 100vh; /* Varmistaa pystysuoran peittävyyden */
-    
+    justify-content: space-between;
+    min-width: 100vw;
+    min-height: 100vh;
 }
 
 .row {
@@ -30,23 +25,20 @@ html,body {
     font-size: 18px;
     margin-top: 200px;
     margin-bottom: 200px;
-
 }
 
-.card {
-    width:min(800px,90%);/* min= yhdistelmä widthistä ja max-widthistä*/
+/* .card {
+    width:min(800px,90%);
     height: 900px;
     border-radius: 10px;
     border: 1px solid #f4f5f250;
-    /* tällä voi muuttaa raidan värin */
     padding: 50px 20px;
     box-shadow: 0 16px 24px rgba(1, 1, 1, 1);
-    /*tällä voi muuttaa varjotekstuurin värin */
     text-align: center;
     background-color: #ffffff12;
     border: 1px solid #fff;
     backdrop-filter: blur(10px);
-}
+} */
 
 .otsikko,.h1 {
     text-align: center;
@@ -58,39 +50,20 @@ html,body {
         0 0 20px cyan,
         0 0 40px cyan,
         0 0 80px cyan;
-
-
 }
 
-.button-container {
-
-    /* Kiinnitetään painikecontainer alareunaan */
-
+/* .button-container {
     position: fixed;
-    /* Kiinnitetään painikecontainer alareunaan */
-
-
     bottom: 5px;
-
-    /* Etäisyys ikkunan alareunasta */
-
     left: 50%;
-    /* Keskitetään vaakasuunnassa */
-
     transform: translateX(-50%);
-    /* Siirretään takaisin puoliväliin */
-
     display: flex;
-
     gap: 1em;
-
     justify-content: center;
-
     margin-bottom: 200px;
-    /* Poistetaan marginaalit */
-}
+} */
 
-.button {
+/* .button {
     line-height: 1;
     background-color: transparent;
     cursor: pointer;
@@ -106,16 +79,16 @@ html,body {
     font-size: 1rem;
     box-shadow: 0 0.7em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
     transition: transform 0.3s;
-
     background: linear-gradient(90deg,
             rgba(77, 54, 208, 1) 0%,
             rgba(132, 116, 254, 1) 100%);
+    min-width: 120px;
+    justify-content: center;
 }
 
 .button__icon {
     width: 1.5em;
     height: 1.5em;
-
 }
 
 .button:hover {
@@ -125,4 +98,33 @@ html,body {
 .button:active {
     transform: scale(0.98);
     box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
+} */
+
+.kysymykset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.kysymykset p {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.5;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.kysymykset input[type="checkbox"] {
+    margin-right: 0.5em;
+    flex-shrink: 0;
 }
