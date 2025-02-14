@@ -1,51 +1,117 @@
 [
 	{
-		"Kysymys": "Ensimmäinen Kysymys",
+		"Kysymys": "1. Kuinka suurella osalla työntekijöistänne on yrityksen henkilökohtainen tietokone (PC) käytössään?",
 		"Vastaukset": [
-			"ensimmäinen vastaus",
-			"toinen vastaus"
-		],
-		"Monivalinta": "Kyllä"
-	},
-	{
-		"Kysymys": "Kysymys 2. Mikä on tietojenkalastelu (phishing)",
-		"Vastaukset": [
-			"Haittaohjelma, joka lukitsee tietokoneen",
-			"Menetelmä, jossa huijataan käyttäjiä luovuttamaan henkilökohtaisia tietojaan",
-			"Verkon suojausmekanismi, joka estää tietomurrot"
+			"Kaikilla",
+			"Yli puolella",
+			"Puolella tai alle",
+			"Vain muutamilla",
+			"En osaa sanoa"
 		],
 		"Monivalinta": "Ei"
 	},
 	{
-		"Kysymys": "Kolmas Kysymys",
+		"Kysymys": "2. Kuinka suurella osalla työntekijöistänne on yrityksen tarjoama mobiililaite (puhelin, tabletti) käytössään?",
 		"Vastaukset": [
-			"kuudes vastaus",
-			"seitsemäs vastaus",
-			"kahdeksas vastaus",
-			"yhdeksäs vastaus"
-		],
-		"Monivalinta": "Kyllä"
-	},
-	{
-		"Kysymys": "Neljäs Kysymys",
-		"Vastaukset": [
-			"10 vastaus",
-			"11 vastaus",
-			"12 vastaus",
-			"13 vastaus",
-			"14 vastaus"
-		],
-		"Monivalinta": "Kyllä"
-	},
-	{
-		"Kysymys": "Viides Kysymys",
-		"Vastaukset": [
-			"15 vastaus",
-			"16 vastaus",
-			"17 vastaus",
-			"18 vastaus",
-			"19 vastaus"
+			"Kaikilla",
+			"Yli puolella",
+			"Puolella tai alle",
+			"Vain muutamilla",
+			"En osaa sanoa"
 		],
 		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "3. Onko vastuu tietoturvallisuudesta osoitettu nimetylle henkilölle",
+		"Vastaukset": [
+			"Kyllä",
+			"Ei"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "4. Onko tietoturvallisuuteen liittyviä riskejä arvioitu? ",
+		"Vastaukset": [
+			"Kyllä",
+			"Ei"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "5. Onko yrityksenne tietoturvallisuuden tasoa auditoitu asiantuntijan toimesta?",
+		"Vastaukset": [
+			"On tehty auditointi tai tietoturvakartoitus",
+			"Auditointi tai tietoturvakartoitus on päätetty suorittaa",
+			"Ei ole suoritettu eikä suunniteltu",
+			"En osaa sanoa"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "6. Onko henkilöstölle annettu tietoturvallisuutta koskevia kirjallisia ohjeita ja koulutusta? (voit valita useampia)",
+		"Vastaukset": [
+			"Kirjallinen ohjeistus on olemassa",
+			"Ohjeistuksessa on tiedotettu henkilöstölle ja se on helposti saatavilla",
+			"EHenkilöstölle on annettu tietoturvallisuutta koskevaa koulutusta",
+			"En osaa sanoa"
+		],
+		"Monivalinta": "Kyllä"
+	},
+	{
+		"Kysymys": "7. Onko yrityksessänne annettu tietoturvallisuutta koskevaa ohjeistusta seuraavista aihealueista? (voit valita useampia)",
+		"Vastaukset": [
+			"Henkilökohtainen tietokone (PC)",
+			"Mobiiliaitteet (älypuhelimet, tabletit)",
+			"Sähköposti",
+			"Haittaohjelmien tunnistaminen ja niitä vastaan suojautuminen",
+			"Huijausviestien tunnistaminen",
+			"Pilvipalveluiden käyttö",
+			"En osaa sanoa"
+		],
+		"Monivalinta": "Kyllä"
+	},
+	{
+		"Kysymys": "8. Onko henkilöstölle annettu henkilötietojen käsittelyä koskevia ohjeita? K/E",
+		"Vastaukset": [
+			"Kyllä",
+			"Ei"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "9. Onko henkilötietoja käsitteleville tiedotettu EU:n tietosuoja-asetuksen (GDPR) vaatimuksista? K/E",
+		"Vastaukset": [
+			"Kyllä",
+			"Ei"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "10. Onko GDPR:n vaatimusten mukaiset tietosuojaselosteet laadittu ja tiedotettu rekisteröidyille? (Koskee erityisesti henkilöasiakkaita, julkaisu www-sivuilla riittää) K/E",
+		"Vastaukset": [
+			"Kyllä",
+			"Ei"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "11. Onko pääsy yrityksen tiloihin yrityksen hallinnassa ja rajattu vain luvan saaneille henkilöille? K/E",
+		"Vastaukset": [
+			"Kyllä",
+			"Ei"
+		],
+		"Monivalinta": "Ei"
+	},
+	{
+		"Kysymys": "12. Mitkä seuraavista kuvaavat teidän yrityksenne tilannetta PC- ja mobiililaitteiden suojauksen osalta? (voit valita useampia)",
+		"Vastaukset": [
+			"Pääsy PC-koneille suojattu vähintään käyttäjätunnuksin ja salasanoin",
+			"PC-koneiden kovalevyt on salattu",
+			"Yrityksen mobiililaitteet on suojattu suojakoodilla",
+			"Yrityksen mobiililaitteet on suojattu sormenjäkitunnistuksella tai kasvontunnistuksella",
+			"Monivaiheinen todentaminen on käytössä kirjauduttaessa pilvipalveluihin (MFA, käyttäjän tunnistaminen salasanan lisäksi kertakäyttöisen koodin tai apin avulla). Pilvipalveluilla tarkoitetaan tässä esim. Microsoftin tai Googlen sähköpostia, tallennustilaa ja muita verkossa olevia palveluita.",
+			"En osaa sanoa"
+		],
+		"Monivalinta": "Kyllä"
 	}
 ]
