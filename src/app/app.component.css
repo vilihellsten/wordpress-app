@@ -1,6 +1,6 @@
 
 html,body {
-    width: 100%;
+    width: clamp(400px,50vm,800px); /*clamp = min, max, and default*/
     height: 100%;
     margin: 0;
     padding: 0;
@@ -34,7 +34,7 @@ html,body {
 }
 
 .card {
-    width: 1500px;
+    width:min(800px,90%);/* min= yhdistelmä widthistä ja max-widthistä*/
     height: 900px;
     border-radius: 10px;
     border: 1px solid #f4f5f250;

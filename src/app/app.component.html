@@ -30,9 +30,9 @@
             </div>
           </div>
         </div>
-        <div class="button-container">
-          <button class="button" [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
-          <button class="button" [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+        <div class="button-container"[hidden]="kyselynPiilotus == 1">
+          <button class="button" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
+          <button class="button" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
         </div>
       </div>
     </div>
