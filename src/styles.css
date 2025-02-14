@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    width: clamp(400px,50vw,800px); /*clamp = min, max, and default*/
+    height: 100%;
+    margin: 0;
+    padding: 0;
+   
+}
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 40px;
+    letter-spacing: 10px;
+    text-shadow: 0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 40px cyan,
+        0 0 80px cyan;
+}

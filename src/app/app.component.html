@@ -18,10 +18,11 @@
         </div>
 
       </div>
-
-      <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
-      <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
-
+      <div class="button-container">
+        <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2}}</button>
+        <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+        
+      </div>
       <div class="tulokset" [hidden]="kyselynPiilotus== 0">
         <h2>Kysymykset ja vastauksesi</h2>
         <div *ngFor="let vastaus of kysymysJaVastaukset">
