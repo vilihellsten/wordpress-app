@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    width: clamp(400px, 50vm, 800px);
+    /*clamp = min, max, and default*/
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
