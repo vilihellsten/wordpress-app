@@ -1,5 +1,5 @@
 <main class="main">
-  <div class="main-container">
+  <div class="main-container" id="content">
     <div class="row">
 
       <div class="otsikko">
@@ -24,8 +24,8 @@
       </div>
 
       <div class="napit">
-        <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
         <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2 }}</button>
+        <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
       </div>
 
       <div class="tulokset" [hidden]="kyselynPiilotus == 0">
@@ -34,6 +34,9 @@
           <div class="spinner"></div>
         </div>
         <div *ngIf="!isLoading" class="ai" [innerHTML]="aiVastaus"></div>
+        <div *ngIf="!isLoading">
+        <button (click)="generatePDF()">{{ "Tallenna raportti" }}</button>
+        </div>
       </div>
 
     </div>
