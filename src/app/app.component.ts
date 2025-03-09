@@ -30,7 +30,9 @@ export class AppComponent {
   nappiTeksti = "Seuraava kysymys"; // muuttuu viimeisen kysymyksen kohdalla "seuraavaKysymys()" funktion kohdalla
   nappiTeksti2 = "Edellinen kysymys";
 
-  kyselynPiilotus = 0
+  kyselynPiilotus = 0;
+
+  isLoading = true;
 
   kysymysJaVastaukset: string[][] = []; //tallentaa kysymyksen ja vastaukset !!!! kesken, voi muuttua !!!
 
@@ -83,8 +85,6 @@ export class AppComponent {
       this.vastaus();
     }
 
-
-
     if (this.kysymysIndexi == this.Kysymykset.length - 1) {// kun viimeinen kysymys saapuu, napin teksti muuttuu "valmis" tekstiin
       this.nappiTeksti = "Valmis";
     }
@@ -94,43 +94,46 @@ export class AppComponent {
 
   }
 
-
   async vastaus() {
+    const maxAttempts = 5;
+    let attempt = 0;
+    let success = false;
 
-    const genAI = new GoogleGenerativeAI("AIzaSyDiBGfjOGyHce_PMShiZyVX7Gqou83Tnuc");
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    while (attempt < maxAttempts && !success) {
 
+      const genAI = new GoogleGenerativeAI("AIzaSyDiBGfjOGyHce_PMShiZyVX7Gqou83Tnuc");
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const prompt = this.kysymysJaVastaukset + "Anna vastauksesi toiseen kysymykseen";
+      const prompt = this.Kysymykset + "Tässä on lista tietoturvakysymyksiä ja niiden vastausmahdollisuuksia," + this.kysymysJaVastaukset + " ja tässä listassa on käyttäjän antamia vastauksia näihin kysymyksiin. Anna arvio vastauksiin tietoturva-asiantuntijan näkökulmasta, vastaus tulee <div></div> väliin joten käytä html koodia joka sopiin divin väliin ja näytä kysymykset ja vastaukset allekkain <ul> <li> sisällä ja otsikko <h1> tagin sisällä. anna jokaiselle vastaukselle arvio ja aivan lopuksi yhteenveto";
 
-    /*
-        const tiedosto = await fetch('../Tietoturvaopas.pdf');
-        const vastaus = await tiedosto.arrayBuffer();
-        const buffer = new Uint8Array(vastaus);
-        const base64 = btoa(String.fromCharCode.apply(null, Array.from(buffer)));
-    
-        const result = await model.generateContent([
-          {
-            inlineData: {
-              data: base64,
-              mimeType: "application/pdf",
-            },
-          },
-          'Summarize this document',]);
-        this.aiVastaus = result.response.text().split("\n");
-      }*/
+      try {
 
-    try {
+        const result = await model.generateContent(prompt);
+        let responseText = result.response.text();
+        if (responseText.startsWith("```html")) {
+          responseText = responseText.slice(7);
+        }
+        if (responseText.endsWith("```\n")) {
+          responseText = responseText.slice(0, -5);
+        }
+        this.isLoading = false;
+        this.aiVastaus = responseText.split("<div></div>"); // jakaa vastauksen div tagin kohdalta kahtia
 
-      const result = await model.generateContent(prompt);
-      this.aiVastaus = result.response.text().split("\n");
+        console.log(result.response.text());
+        success = true; // jos vastaus saadaan merkitään se onnistuneeksi
 
-      console.log(result.response.text());
-    } catch (error) {
-      console.error("Errori:", error);
+      } catch (error) {
+        attempt++;
+        console.error("Errori:", error);
+        if (attempt < maxAttempts) {
+          console.log(`Yritetään uudelleen (${attempt}/${maxAttempts})...`);
+          await new Promise(resolve => setTimeout(resolve, 2000)); // odotetaan kaksi sekunttia ennen uutta yritystä
+        } else {
+          console.error("Kaikki yritykset epäonnistuivat.");
+        }
+      }
     }
   }
-
 
   edellinenKysymys() { // napin painalluksesta html käy ngif/for avulla läpi uuden lohkon ja uudet kysymykset kehiin
 

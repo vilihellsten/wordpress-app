@@ -1,22 +1,235 @@
-.main-container {}
+.main-container {
+    background: rgb(16, 16, 125);
+    background: radial-gradient(circle, rgba(16, 16, 125, 1) 0%, rgba(22, 36, 133, 1) 6%, rgba(26, 41, 139, 1) 12%, rgba(27, 43, 144, 1) 18%, rgba(25, 41, 142, 1) 29%, rgba(14, 27, 122, 1) 44%, rgba(8, 18, 93, 1) 57%, rgba(2, 8, 68, 1) 77%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 100vw;
+    min-height: 100vh;
+}
 
 .row {
-    display: grid;
     justify-content: center;
     width: 100%;
-
+    color: #f4f5f2;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 200px;
+    max-width: 600;
+    min-width: 600;
 }
 
-.row2 {
-    display: flex;
+.row p {
+    text-align: center;
+    margin-bottom: 25px;
+}
 
+.kysely {
+    flex-direction: column;
+    display: flex;
+    gap: 1em;
+    max-width: 80%;
+    min-width: 1000px;
+    margin: 0 auto;
+}
+
+.kysely h2 {
+    text-align: center;
+}
+
+
+.tulokset {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 20px;
+    max-width: 80%;
+    min-width: 80%;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 35px;
+    letter-spacing: 10px;
+    text-shadow: 0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 40px cyan,
+        0 0 80px cyan;
+    margin-bottom: 20px;
+}
+
+[hidden] {
+    display: none;
+}
+
+.napit {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+
+
+button {
+    line-height: 1;
+    background-color: transparent;
+    cursor: pointer;
+    align-items: center;
+    margin-top: 1em;
+    padding: 0.75em 1em;
+    padding-right: 1.25em;
+    color: #fff;
+    border: 1px solid transparent;
+    font-weight: 700;
+    border-radius: 2em;
+    font-size: 1rem;
+    box-shadow: 0 0.7em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
+    transition: transform 0.3s;
+    background: linear-gradient(90deg,
+            rgba(77, 54, 208, 1) 0%,
+            rgba(132, 116, 254, 1) 100%);
+    min-width: 120px;
     justify-content: center;
 }
 
-button {
-    margin-top: 15px;
+.button__icon {
+    width: 1.5em;
+    height: 1.5em;
 }
 
-.h1 {
-    text-align: center;
+button:hover {
+    border-color: #f4f5f2;
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
+}
+
+
+.kysymykset {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 800px;
+    min-width: 800px;
+    margin: 0 auto;
+}
+
+
+.kysymykset p {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.5;
+    margin: 0.5em 0;
+    padding: 0.5em;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    text-align: left;
+
+}
+
+.kysymykset input[type="checkbox"] {
+    margin-right: 0.5em;
+    flex-shrink: 0;
+}
+
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.2);
+    border-top-color: #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Hide default checkbox */
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Style the checkbox container */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    gap: 10px;
+    /* Space between checkbox and text */
+    font-weight: bold;
+    color: #333;
+    user-select: none;
+    margin-right: 10px;
+}
+
+/* Modern circular checkbox */
+.custom-checkbox .checkmark {
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 3px solid #007bff;
+    border-radius: 50%;
+    position: relative;
+
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
+}
+
+/* Glowing effect on hover */
+.custom-checkbox:hover .checkmark {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.9);
+}
+
+/* Checkmark effect (filled circle) */
+.custom-checkbox input:checked+.checkmark {
+    background-color: #007bff;
+    border-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 1);
+}
+
+/* Inner dot effect */
+.custom-checkbox .checkmark::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Show dot when checked */
+.custom-checkbox input:checked+.checkmark::after {
+    opacity: 1;
 }

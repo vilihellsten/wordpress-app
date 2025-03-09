@@ -1,43 +1,43 @@
 <main class="main">
-
   <div class="main-container">
     <div class="row">
 
-      <h1>Kyberturvakysely</h1>
-      <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja se kattaa keskeiset kyberturvallisuuden
-        osa-alueet</p>
+      <div class="otsikko">
+        <h1>Kyberturvakysely</h1>
+        <p>Tämä kysely kattaa kyberturvallisuuteen liittyvät kysymykset ja sekä keskeiset kyberturvallisuuden
+          osa-alueet</p>
+      </div>
 
       <div class="kysely" [hidden]="kyselynPiilotus == 1">
         <h2>{{ Kysymykset[kysymysIndexi].Kysymys }}</h2>
 
         <div class="kysymykset">
           <p *ngFor="let vastaus of Kysymykset[kysymysIndexi].Vastaukset">
-            <input placeholder="Kysymys" name="id" type="checkbox" (change)="onCheckboxChange($event, vastaus)"
-              [checked]="vastaukset.includes(vastaus)">{{vastaus }}
+            <label class="custom-checkbox">
+              <input type="checkbox" name="id" (change)="onCheckboxChange($event, vastaus)"
+                [checked]="vastaukset.includes(vastaus)">
+              <span class="checkmark"></span>
+            </label>
+            {{ vastaus }}
           </p>
         </div>
-
       </div>
 
-      <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
-      <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2
-        }}</button>
+      <div class="napit">
+        <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+        <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2 }}</button>
+      </div>
 
-      <div class="tulokset" [hidden]="kyselynPiilotus== 0">
-        <h2>Kysymykset ja vastauksesi</h2>
-        <div *ngFor="let vastaus of kysymysJaVastaukset">
-          <h3>{{ vastaus[0] }}</h3>
-          <div *ngFor="let vastaus of vastaus.slice(1)">
-            <p>{{vastaus}}</p>
-
-          </div>
+      <div class="tulokset" [hidden]="kyselynPiilotus == 0">
+        <p *ngIf="isLoading">Rakennetaan raporttia...</p>
+        <div *ngIf="isLoading" class="spinner-container">
+          <div class="spinner"></div>
         </div>
-        <div [innerHTML]=aiVastaus></div>
+        <div *ngIf="!isLoading" class="ai" [innerHTML]="aiVastaus"></div>
       </div>
 
     </div>
   </div>
-
-
 </main>
-<router-outlet />
+
+<router-outlet></router-outlet>
