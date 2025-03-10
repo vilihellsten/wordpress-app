@@ -4,6 +4,8 @@ import * as kysymyksia from "../kysymyksia.json"
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -39,6 +41,17 @@ export class AppComponent {
   vastaukset: string[] = [this.Kysymykset[this.kysymysIndexi].Kysymys] //alustaa sivun avauksen alussa vastaukset listan sisältämään ensimmäisen kysymyksen
 
   aiVastaus: string[] = [];
+
+  generatePDF() {
+    const elementToPrint: any = document.getElementById('content');
+
+    html2canvas(elementToPrint, {scale :2}).then((canvas) => {
+      const pdf = new jsPDF();
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+
+      pdf.save('kysely.pdf');
+    });
+  }
 
 
   onCheckboxChange(event: any, vastaus: string) { // kuuntelee checkboxien eventtejä
