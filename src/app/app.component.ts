@@ -1,110 +1,99 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
-import * as kysymyksia from "../kysymyksia.json"
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import {jsPDF} from 'jspdf';
+import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
-
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule],
+  imports: [RouterOutlet, CommonModule, FormsModule, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'wordpress-app';
-  Kysymykset: any = (kysymyksia as any).default;
+  Kysymykset: any;
+  kysymysIndexi = 0;
+  nappiTeksti = "Seuraava kysymys";
+  nappiTeksti2 = "Edellinen kysymys";
+  kyselynPiilotus = 0;
+  isLoading = true;
+  kysymysJaVastaukset: string[][] = [];
+  vastaukset: string[] = [];
+  aiVastaus: string[] = [];
 
+  constructor(private http: HttpClient) {}
 
-
-  constructor() {
-    console.log(this.Kysymykset) // näyttää koko JSON sisällön logissa
-    console.log(this.Kysymykset[0]) // näyttää ensimmäinsen lohkon
-    console.log(this.Kysymykset[1]) // näyttää toisen lohkon
-
+  ngOnInit() {
+    this.fetchKysymykset();
   }
 
-  kysymysIndexi = 0;  // pitää kirjaa siitä missä kysymys"lohkossa" mennään ja auttaa käymään kysymykset läpi "lohko" kerrallaan
-  nappiTeksti = "Seuraava kysymys"; // muuttuu viimeisen kysymyksen kohdalla "seuraavaKysymys()" funktion kohdalla
-  nappiTeksti2 = "Edellinen kysymys";
-
-  kyselynPiilotus = 0;
-
-  isLoading = true;
-
-  kysymysJaVastaukset: string[][] = []; //tallentaa kysymyksen ja vastaukset !!!! kesken, voi muuttua !!!
-
-  vastaukset: string[] = [this.Kysymykset[this.kysymysIndexi].Kysymys] //alustaa sivun avauksen alussa vastaukset listan sisältämään ensimmäisen kysymyksen
-
-  aiVastaus: string[] = [];
+  fetchKysymykset() {
+    this.http.get<any>('http://localhost/kysymyksia.json').subscribe(data => {
+      this.Kysymykset = data;
+      this.vastaukset = [this.Kysymykset[this.kysymysIndexi].Kysymys];
+      console.log(this.Kysymykset);
+      console.log(this.Kysymykset[0]);
+      console.log(this.Kysymykset[1]);
+    });
+  }
 
   generatePDF() {
     const elementToPrint: any = document.getElementById('content');
-
-    html2canvas(elementToPrint, {scale :2}).then((canvas) => {
+    html2canvas(elementToPrint, { scale: 2 }).then((canvas) => {
       const pdf = new jsPDF();
       pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
-
       pdf.save('kysely.pdf');
     });
   }
 
-
-  onCheckboxChange(event: any, vastaus: string) { // kuuntelee checkboxien eventtejä
+  onCheckboxChange(event: any, vastaus: string) {
     if (event.target.checked) {
-
       if (!this.vastaukset.includes(this.Kysymykset[this.kysymysIndexi].Kysymys))
-        this.vastaukset.unshift(this.Kysymykset[this.kysymysIndexi].Kysymys) // unshift asettaa arrayn ensimmäiseksi stringiksi tämänhetkisen kysymyksen
+        this.vastaukset.unshift(this.Kysymykset[this.kysymysIndexi].Kysymys);
 
-      if (this.Kysymykset[this.kysymysIndexi].Monivalinta == "Ei") { // jos kysymyksen tyyppi ei ole monivalinta
-        this.vastaukset = [this.Kysymykset[this.kysymysIndexi].Kysymys]
-        this.vastaukset.push(vastaus)
-        console.log("vanha vastaus poistettu listasta ja " + vastaus + " lisätty listaan")
-
-        this.kysymysJaVastaukset[this.kysymysIndexi] = [...this.vastaukset]; // tämä tallentaa vastauksen listaan vaikka "seuraavaa" tai "valmis" nappia ei olla painettu
-        return
+      if (this.Kysymykset[this.kysymysIndexi].Monivalinta == "Ei") {
+        this.vastaukset = [this.Kysymykset[this.kysymysIndexi].Kysymys];
+        this.vastaukset.push(vastaus);
+        console.log("vanha vastaus poistettu listasta ja " + vastaus + " lisätty listaan");
+        this.kysymysJaVastaukset[this.kysymysIndexi] = [...this.vastaukset];
+        return;
       }
 
-      console.log(vastaus + " lisätty listaan")
-      this.vastaukset.push(vastaus) // checkbox true = lisää vastauksen vastaukset listaan
+      console.log(vastaus + " lisätty listaan");
+      this.vastaukset.push(vastaus);
       this.kysymysJaVastaukset[this.kysymysIndexi] = [...this.vastaukset];
-
     } else {
-      console.log(vastaus + " poistetu listasta")
+      console.log(vastaus + " poistettu listasta");
       const index = this.vastaukset.indexOf(vastaus);
-      this.vastaukset.splice(index, 1) // checkbox false = poistaa vastauksen vastaukset listasta
+      this.vastaukset.splice(index, 1);
     }
   }
 
-  seuraavaKysymys() { // napin painalluksesta html käy ngif/for avulla läpi uuden lohkon ja uudet kysymykset kehiin
+  seuraavaKysymys() {
+    if (!this.vastaukset.includes(this.Kysymykset[this.kysymysIndexi].Kysymys))
+      this.vastaukset.unshift(this.Kysymykset[this.kysymysIndexi].Kysymys);
 
-    if (!this.vastaukset.includes(this.Kysymykset[this.kysymysIndexi].Kysymys)) //jos vastaukset ei sisällä kysymystä, siirtää vastaukset listan alkuun kysymyksen
-      this.vastaukset.unshift(this.Kysymykset[this.kysymysIndexi].Kysymys)
-
-    this.kysymysJaVastaukset[this.kysymysIndexi] = [...this.vastaukset]; // Tallentaa tiedot kysymysJaVastaukset-rakenteeseen ennen kuin siirtyy seuraavaan kysymykseen
-
+    this.kysymysJaVastaukset[this.kysymysIndexi] = [...this.vastaukset];
 
     if (this.kysymysIndexi < this.Kysymykset.length - 1) {
       this.kysymysIndexi++;
     }
 
-    if (this.nappiTeksti == "Valmis") { // piilottaa kyselyn kun nappiteksti on valmis
-      this.kyselynPiilotus = 1
-
+    if (this.nappiTeksti == "Valmis") {
+      this.kyselynPiilotus = 1;
       this.vastaus();
     }
 
-    if (this.kysymysIndexi == this.Kysymykset.length - 1) {// kun viimeinen kysymys saapuu, napin teksti muuttuu "valmis" tekstiin
+    if (this.kysymysIndexi == this.Kysymykset.length - 1) {
       this.nappiTeksti = "Valmis";
     }
-    console.log(this.kysymysJaVastaukset)
-
-    this.vastaukset = this.kysymysJaVastaukset[this.kysymysIndexi] || []; //Hakee vastaukset kysymysJaVastaukset-rakenteesta ja asettaa ne aktiiviseksi
-
+    console.log(this.kysymysJaVastaukset);
+    this.vastaukset = this.kysymysJaVastaukset[this.kysymysIndexi] || [];
   }
 
   async vastaus() {
@@ -113,14 +102,12 @@ export class AppComponent {
     let success = false;
 
     while (attempt < maxAttempts && !success) {
-
       const genAI = new GoogleGenerativeAI("AIzaSyDiBGfjOGyHce_PMShiZyVX7Gqou83Tnuc");
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       const prompt = this.Kysymykset + "Tässä on lista tietoturvakysymyksiä ja niiden vastausmahdollisuuksia," + this.kysymysJaVastaukset + " ja tässä listassa on käyttäjän antamia vastauksia näihin kysymyksiin. Anna arvio vastauksiin tietoturva-asiantuntijan näkökulmasta, vastaus tulee <div></div> väliin joten käytä html koodia joka sopiin divin väliin ja näytä kysymykset ja vastaukset allekkain <ul> <li> sisällä ja otsikko <h1> tagin sisällä. anna jokaiselle vastaukselle arvio ja aivan lopuksi yhteenveto";
 
       try {
-
         const result = await model.generateContent(prompt);
         let responseText = result.response.text();
         if (responseText.startsWith("```html")) {
@@ -130,17 +117,15 @@ export class AppComponent {
           responseText = responseText.slice(0, -5);
         }
         this.isLoading = false;
-        this.aiVastaus = responseText.split("<div></div>"); // jakaa vastauksen div tagin kohdalta kahtia
-
+        this.aiVastaus = responseText.split("<div></div>");
         console.log(result.response.text());
-        success = true; // jos vastaus saadaan merkitään se onnistuneeksi
-
+        success = true;
       } catch (error) {
         attempt++;
         console.error("Errori:", error);
         if (attempt < maxAttempts) {
           console.log(`Yritetään uudelleen (${attempt}/${maxAttempts})...`);
-          await new Promise(resolve => setTimeout(resolve, 2000)); // odotetaan kaksi sekunttia ennen uutta yritystä
+          await new Promise(resolve => setTimeout(resolve, 2000));
         } else {
           console.error("Kaikki yritykset epäonnistuivat.");
         }
@@ -148,20 +133,16 @@ export class AppComponent {
     }
   }
 
-  edellinenKysymys() { // napin painalluksesta html käy ngif/for avulla läpi uuden lohkon ja uudet kysymykset kehiin
-
-    if (this.kysymysIndexi != 0) { // laskee kysymysindexiä jotta edelliset kysymykset tulevat esiin
+  edellinenKysymys() {
+    if (this.kysymysIndexi != 0) {
       this.kysymysIndexi--;
     }
 
-    if (this.kysymysIndexi != (this.Kysymykset.length - 1)) {// kun viimeinen kysymys saapuu, napin teksti muuttuu "valmis" tekstiin
+    if (this.kysymysIndexi != (this.Kysymykset.length - 1)) {
       this.nappiTeksti = "Seuraava Kysymys";
     }
 
-    this.vastaukset = this.kysymysJaVastaukset[this.kysymysIndexi] || []; //Hakee vastaukset kysymysJaVastaukset-rakenteesta ja asettaa ne aktiiviseksi
-
-    console.log(this.kysymysJaVastaukset)
-
+    this.vastaukset = this.kysymysJaVastaukset[this.kysymysIndexi] || [];
+    console.log(this.kysymysJaVastaukset);
   }
-
 }
