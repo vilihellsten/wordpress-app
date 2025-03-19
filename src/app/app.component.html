@@ -24,8 +24,9 @@
       </div>
 
       <div class="napit">
-        <button [hidden]="kyselynPiilotus == 1" (click)="edellinenKysymys()">{{ nappiTeksti2 }}</button>
-        <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ nappiTeksti }}</button>
+        <button [hidden]="kyselynPiilotus == 1 || kysymysIndexi === 0 " (click)="edellinenKysymys()">{{ edellinen
+          }}</button>
+        <button [hidden]="kyselynPiilotus == 1" (click)="seuraavaKysymys()">{{ seuraava }}</button>
       </div>
 
       <div class="tulokset" [hidden]="kyselynPiilotus == 0">
@@ -35,7 +36,7 @@
         </div>
         <div *ngIf="!isLoading" class="ai" [innerHTML]="aiVastaus"></div>
         <div *ngIf="!isLoading">
-        <button (click)="generatePDF()">{{ "Tallenna raportti" }}</button>
+          <button (click)="generatePDF()">{{ "Tallenna raportti" }}</button>
         </div>
       </div>
 
