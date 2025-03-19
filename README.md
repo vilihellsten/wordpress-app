@@ -1,6 +1,11 @@
 # WordpressApp
 
-Security Questionnaire for a website
+Security Questionnaire for a website / Kyberturvakysely nettisivulle
+
+Projekti luo kyberturvakyselyn JSON-tiedoston pohjalta ja lähettää Gemini AI:lle Tietoturvaopas.pdf tiedoston sekä palauttaa loppuraportin kyselystä käyttäjälle.
+Repositorio sisältää esimerkki JSON-tiedoston sekä Tietoturvaoppaan.
+
+Projektiin koodiin täytyy lisätä Google gemini API-avain. määrittää JSON-tiedosto sekä Tietoturvaoppaan sijainnin polku.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
 
