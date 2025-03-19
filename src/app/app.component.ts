@@ -122,7 +122,7 @@ export class AppComponent implements OnInit {
     // Yritetään hakea vastausta viisi kertaa ennen kuin luovutetaan, aina vastauksen saanti ei onnistu ensimmäisellä kerralla
     while (attempt < maxAttempts && !success) {
 
-      const genAI = new GoogleGenerativeAI("AIzaSyDiBGfjOGyHce_PMShiZyVX7Gqou83Tnuc");
+      const genAI = new GoogleGenerativeAI("Insert API-key here"); // Google gemini API key
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       const prompt = this.Kysymykset + "Tässä on lista tietoturvakysymyksiä ja niiden vastausvaihtoehtoja," + this.kysymysJaVastaukset + " ja tässä listassa on käyttäjän antamia vastauksia näihin kysymyksiin. Arvioi käyttäjän vastauksia kyselyn vastausvaihtoehtoihin tietoturvan näkökulmasta, vastaus tulee <div></div> väliin joten käytä html koodia joka sopiin divin väliin ja näytä kysymykset ja vastaukset allekkain, vastaus ja arvio <ul>sisällä, loput <li> sisällä ja otsikko <h1> tagin sisällä ja väliotsikot <h3> tagin sisällä. anna jokaiselle vastaukselle arvio ja raportin alkuun kattava yhteenveto";
