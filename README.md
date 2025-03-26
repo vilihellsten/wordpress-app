@@ -3,9 +3,12 @@
 Security Questionnaire for a website / Kyberturvakysely nettisivulle
 
 Projekti luo kyberturvakyselyn JSON-tiedoston pohjalta ja lähettää Gemini AI:lle Tietoturvaopas.pdf tiedoston sekä palauttaa loppuraportin kyselystä käyttäjälle.
-Repositorio sisältää esimerkki JSON-tiedoston sekä Tietoturvaoppaan.
 
-Projektiin koodiin täytyy lisätä Google gemini API-avain. määrittää JSON-tiedosto sekä Tietoturvaoppaan sijainnin polku.
+Repositorio sisältää esimerkki kysymyksia.JSON-tiedoston sekä Tietoturvaoppaan. JSON-tiedoston muotoilun täytyy pysyä samana kuin esimerkissä.
+
+Projektiin koodiin täytyy lisätä Google gemini oma API-avain, määrittää kysymyksia.JSON-tiedoston sekä Tietoturvaopas.pdf sijainnin polku.
+
+Google gemini API-avain sekä Tietoturvaopas.pdf polku täytyy laittaa "vastaus" funktioon, kysymykset.JSON-tiedoston fetchKysymykset funktioon.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
 
