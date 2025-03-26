@@ -8,7 +8,7 @@ Repositorio sisältää esimerkki kysymyksia.JSON-tiedoston sekä Tietoturvaoppa
 
 Projektiin koodiin täytyy lisätä Google gemini oma API-avain, määrittää kysymyksia.JSON-tiedoston sekä Tietoturvaopas.pdf sijainnin polku.
 
-Google gemini API-avain sekä Tietoturvaopas.pdf polku täytyy laittaa "vastaus" funktioon, kysymykset.JSON-tiedoston fetchKysymykset funktioon.
+Google gemini API-avain sekä Tietoturvaopas.pdf polku täytyy laittaa "vastaus" funktioon, kysymykset.JSON-tiedoston polku fetchKysymykset funktioon.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
 
